@@ -400,7 +400,7 @@ function InfoBlock({ title, items }) {
   );
 }
 
-function DemoBtn({ icon, label, onClick, accent }) {
+function DemoBtn({ icon, label, onClick, accent = false }: any) {
   return (
     <button onClick={onClick} style={{
       display: "flex", alignItems: "center", gap: 6, padding: "9px 18px", borderRadius: 10,
