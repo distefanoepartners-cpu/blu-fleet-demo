@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NS3000 — Schede Funzionalità</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,400&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1D3A;
+    --deep: #1E3A5F;
+    --teal: #0891B2;
+    --teal-light: #22D3EE;
+    --gold: #F59E0B;
+    --ice: #E0F2FE;
+    --off: #F0F9FF;
+    --body: #334155;
+    --muted: #64748B;
+    --white: #FFFFFF;
+    --green: #059669;
+    --card-shadow: 0 4px 24px rgba(11,29,58,.08), 0 1px 4px rgba(11,29,58,.04);
+    --card-hover: 0 12px 40px rgba(11,29,58,.14), 0 2px 8px rgba(11,29,58,.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--off);
+    color: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .ns-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--deep) 60%, #15445e 100%);
+    padding: 80px 24px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .ns-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 30% 80%, rgba(8,145,178,.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(34,211,238,.08) 0%, transparent 50%);
+  }
+  .ns-hero > * { position: relative; z-index: 1; }
+  .ns-hero .badge {
+    display: inline-block;
+    background: rgba(8,145,178,.2);
+    border: 1px solid rgba(8,145,178,.35);
+    color: var(--teal-light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .ns-hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+  .ns-hero h1 span { color: var(--teal-light); }
+  .ns-hero p {
+    font-size: 18px;
+    color: rgba(255,255,255,.6);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .ns-section {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 64px 24px;
+  }
+  .ns-section-title {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .ns-section-title .kicker {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .ns-section-title h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -.5px;
+  }
+  .ns-section-title p {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 560px;
+    margin: 12px auto 0;
+  }
+
+  /* ── FEATURE CARDS GRID ── */
+  .ns-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 24px;
+  }
+  .ns-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(11,29,58,.06);
+    transition: transform .25s, box-shadow .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .ns-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover);
+  }
+  .ns-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    border-radius: 16px 16px 0 0;
+  }
+  .ns-card .icon-wrap {
+    width: 52px; height: 52px;
+    background: var(--ice);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  .ns-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .ns-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+  .ns-card .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ns-card .tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--ice);
+    color: var(--teal);
+    white-space: nowrap;
+  }
+
+  /* ── HIGHLIGHT ROW (alternating) ── */
+  .ns-highlight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 56px 0;
+    border-bottom: 1px solid rgba(11,29,58,.06);
+  }
+  .ns-highlight:last-child { border-bottom: none; }
+  .ns-highlight.reverse .hl-content { order: 2; }
+  .ns-highlight.reverse .hl-visual { order: 1; }
+
+  .hl-visual {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 40px 32px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hl-visual::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(8,145,178,.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .hl-visual .hl-icon { font-size: 42px; margin-bottom: 16px; }
+  .hl-visual .hl-stat {
+    font-family: 'Outfit', sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--teal-light);
+    line-height: 1;
+  }
+  .hl-visual .hl-stat-label {
+    font-size: 14px;
+    color: rgba(255,255,255,.5);
+    margin-top: 6px;
+  }
+  .hl-visual .hl-items {
+    list-style: none;
+    margin-top: 12px;
+  }
+  .hl-visual .hl-items li {
+    color: rgba(255,255,255,.75);
+    font-size: 14px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .hl-visual .hl-items li:last-child { border: none; }
+  .hl-visual .hl-items li::before {
+    content: '✓';
+    color: var(--teal-light);
+    font-weight: 700;
+    margin-right: 10px;
+  }
+
+  .hl-content .kicker {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .hl-content h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(24px, 3.5vw, 32px);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 14px;
+    letter-spacing: -.3px;
+  }
+  .hl-content p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .hl-content .feature-list {
+    list-style: none;
+  }
+  .hl-content .feature-list li {
+    font-size: 14px;
+    color: var(--body);
+    padding: 8px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .hl-content .feature-list li .dot {
+    width: 8px; height: 8px;
+    min-width: 8px;
+    background: var(--teal);
+    border-radius: 50%;
+    margin-top: 6px;
+  }
+
+  /* ── CTA BANNER ── */
+  .ns-cta {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--deep) 100%);
+    border-radius: 24px;
+    padding: 56px 40px;
+    text-align: center;
+    margin: 0 24px 64px;
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+  }
+  .ns-cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 120%, rgba(8,145,178,.2) 0%, transparent 60%);
+  }
+  .ns-cta > * { position: relative; }
+  .ns-cta h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .ns-cta p {
+    font-size: 16px;
+    color: rgba(255,255,255,.55);
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+  .ns-cta .btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 36px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 16px rgba(8,145,178,.35);
+  }
+  .ns-cta .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(8,145,178,.45);
+  }
+  .ns-cta .contact-info {
+    margin-top: 20px;
+    font-size: 14px;
+    color: rgba(255,255,255,.4);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .ns-highlight { grid-template-columns: 1fr; gap: 28px; }
+    .ns-highlight.reverse .hl-content,
+    .ns-highlight.reverse .hl-visual { order: unset; }
+    .ns-cards { grid-template-columns: 1fr; }
+    .ns-hero { padding: 56px 20px 48px; }
+    .ns-cta { margin: 0 16px 48px; padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════ -->
+<section class="ns-hero">
+  <div class="badge">Rent Management System</div>
+  <h1>NS<span>3000</span></h1>
+  <p>La piattaforma completa per digitalizzare il noleggio nautico. Backoffice, booking online, pagamenti e notifiche in un unico sistema.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SCHEDE MODULI PRINCIPALI
+     ═══════════════════════════════════════════ -->
+<section class="ns-section">
+  <div class="ns-section-title">
+    <div class="kicker">Moduli</div>
+    <h2>Tutto quello che ti serve, integrato</h2>
+    <p>Ogni modulo è pensato per risolvere un problema specifico del noleggio nautico</p>
+  </div>
+
+  <div class="ns-cards">
+
+    <!-- CARD 1 -->
+    <div class="ns-card">
+      <div class="icon-wrap">📊</div>
+      <h3>Dashboard Backoffice</h3>
+      <p>Gestisci prenotazioni, flotta, clienti e incassi da un'unica interfaccia. Planning visivo con vista giornaliera e mensile, statistiche in tempo reale e filtri avanzati.</p>
+      <div class="tag-list">
+        <span class="tag">Planning Visivo</span>
+        <span class="tag">Statistiche</span>
+        <span class="tag">Multi-utente</span>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="ns-card">
+      <div class="icon-wrap">🌐</div>
+      <h3>Booking Online WordPress</h3>
+      <p>Il tuo sito diventa un canale di vendita. Plugin WordPress con catalogo servizi, disponibilità in tempo reale, form guidato step-by-step e supporto multilingua WPML.</p>
+      <div class="tag-list">
+        <span class="tag">WordPress</span>
+        <span class="tag">WPML IT/EN</span>
+        <span class="tag">Responsive</span>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="ns-card">
+      <div class="icon-wrap">💳</div>
+      <h3>Pagamenti Stripe</h3>
+      <p>Accetta acconti e saldi online con carta di credito. Riconciliazione automatica, gestione cauzione e supporto multi-metodo: contanti, POS, bonifico.</p>
+      <div class="tag-list">
+        <span class="tag">Stripe</span>
+        <span class="tag">PCI DSS</span>
+        <span class="tag">Multi-metodo</span>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="ns-card">
+      <div class="icon-wrap">📧</div>
+      <h3>Email Automatiche</h3>
+      <p>Conferme di prenotazione professionali inviate automaticamente al cliente in italiano o inglese. Template HTML brandizzato con tutti i dettagli del servizio.</p>
+      <div class="tag-list">
+        <span class="tag">Resend</span>
+        <span class="tag">Bilingue IT/EN</span>
+        <span class="tag">Template Pro</span>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="ns-card">
+      <div class="icon-wrap">📱</div>
+      <h3>Notifiche SMS</h3>
+      <p>SMS automatici a te e allo skipper ad ogni conferma prenotazione. Riepilogo immediato con dati essenziali: cliente, barca, data, importo.</p>
+      <div class="tag-list">
+        <span class="tag">Twilio</span>
+        <span class="tag">Auto & Manuale</span>
+        <span class="tag">Log Delivery</span>
+      </div>
+    </div>
+
+    <!-- CARD 6 -->
+    <div class="ns-card">
+      <div class="icon-wrap">📄</div>
+      <h3>Contratti PDF</h3>
+      <p>Genera il contratto di noleggio con un click. Dati del cliente, barca, servizio e condizioni precompilati automaticamente dal backoffice. Pronto per la firma.</p>
+      <div class="tag-list">
+        <span class="tag">One-Click</span>
+        <span class="tag">Precompilato</span>
+        <span class="tag">Template Legale</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     SEZIONI DETTAGLIO ALTERNATO
+     ═══════════════════════════════════════════ -->
+<section class="ns-section" style="padding-top: 0;">
+
+  <!-- PRENOTAZIONI -->
+  <div class="ns-highlight">
+    <div class="hl-content">
+      <div class="kicker">Gestione Prenotazioni</div>
+      <h3>Ogni dettaglio sotto controllo</h3>
+      <p>Dal primo contatto alla chiusura: crea, modifica e monitora le prenotazioni con un modal completo che gestisce ogni aspetto operativo ed economico.</p>
+      <ul class="feature-list">
+        <li><span class="dot"></span>Ricerca cliente live con creazione rapida inline</li>
+        <li><span class="dot"></span>Calcolo automatico prezzo per barca, mese e fascia oraria</li>
+        <li><span class="dot"></span>Prenotazioni multi-giorno con prezzo giornaliero × giorni</li>
+        <li><span class="dot"></span>Gestione acconto, saldo e cauzione con metodi separati</li>
+        <li><span class="dot"></span>Assegnazione skipper con alert scadenza patente</li>
+        <li><span class="dot"></span>Raccolta documenti identità e patente nautica</li>
+      </ul>
+    </div>
+    <div class="hl-visual">
+      <div class="hl-icon">🗓️</div>
+      <div class="hl-stat">4</div>
+      <div class="hl-stat-label">Tipi di servizio gestiti</div>
+      <ul class="hl-items">
+        <li>Locazione self-drive</li>
+        <li>Tour privati con skipper</li>
+        <li>Tour collettivi per persona</li>
+        <li>Tour personalizzati</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FLOTTA -->
+  <div class="ns-highlight reverse">
+    <div class="hl-content">
+      <div class="kicker">Gestione Flotta</div>
+      <h3>La tua flotta, completamente mappata</h3>
+      <p>Ogni barca ha la propria scheda con prezzi stagionali, servizi associati, documenti richiesti e stato di disponibilità sempre aggiornato.</p>
+      <ul class="feature-list">
+        <li><span class="dot"></span>Prezzi per 4 fasce stagionali (Apr-Mag, Giu, Lug-Set, Ago)</li>
+        <li><span class="dot"></span>Half-day e full-day con tariffe differenziate</li>
+        <li><span class="dot"></span>Gestione requisito patente nautica e abilitazione Capri</li>
+        <li><span class="dot"></span>Cauzione configurabile per barca</li>
+        <li><span class="dot"></span>Indisponibilità programmabili per manutenzione</li>
+      </ul>
+    </div>
+    <div class="hl-visual">
+      <div class="hl-icon">⚓</div>
+      <div class="hl-stat">100%</div>
+      <div class="hl-stat-label">Disponibilità in tempo reale</div>
+      <ul class="hl-items">
+        <li>Verifica automatica anti-overbooking</li>
+        <li>Sincronizzazione con plugin WordPress</li>
+        <li>Blocco fasce orarie occupate</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BOOKING ONLINE -->
+  <div class="ns-highlight">
+    <div class="hl-content">
+      <div class="kicker">Prenotazione Online</div>
+      <h3>Il cliente prenota dal tuo sito, tu ricevi tutto</h3>
+      <p>Il plugin WordPress trasforma il tuo sito in un canale di vendita attivo 24/7. Il cliente sceglie, paga e riceve conferma. Tu ricevi SMS e email.</p>
+      <ul class="feature-list">
+        <li><span class="dot"></span>Catalogo servizi con filtri per destinazione</li>
+        <li><span class="dot"></span>Selezione barca con verifica disponibilità real-time</li>
+        <li><span class="dot"></span>Form progressivo: dati → documenti → pagamento</li>
+        <li><span class="dot"></span>Pagamento acconto immediato con Stripe</li>
+        <li><span class="dot"></span>Tour collettivi con assegnazione automatica barca</li>
+        <li><span class="dot"></span>Compatibile WPML per sito multilingua</li>
+      </ul>
+    </div>
+    <div class="hl-visual">
+      <div class="hl-icon">🚀</div>
+      <div class="hl-stat">24/7</div>
+      <div class="hl-stat-label">Prenotazioni dal tuo sito web</div>
+      <ul class="hl-items">
+        <li>Zero chiamate, zero WhatsApp</li>
+        <li>Acconto incassato subito</li>
+        <li>Notifica istantanea al tuo team</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SICUREZZA -->
+  <div class="ns-highlight reverse">
+    <div class="hl-content">
+      <div class="kicker">Sicurezza & Tecnologia</div>
+      <h3>Infrastruttura solida e protetta</h3>
+      <p>NS3000 è costruito su tecnologie enterprise-grade: database cloud PostgreSQL, hosting Vercel con deploy automatici, protezione dati a ogni livello.</p>
+      <ul class="feature-list">
+        <li><span class="dot"></span>Calcolo prezzo server-side anti-manomissione</li>
+        <li><span class="dot"></span>Row Level Security su ogni tabella del database</li>
+        <li><span class="dot"></span>Nessun dato carta salvato — Stripe gestisce tutto</li>
+        <li><span class="dot"></span>Webhook con firma HMAC-SHA256 obbligatoria</li>
+        <li><span class="dot"></span>Ruoli e permessi: Admin, Staff (sola lettura)</li>
+      </ul>
+    </div>
+    <div class="hl-visual">
+      <div class="hl-icon">🔒</div>
+      <div class="hl-stat">Enterprise</div>
+      <div class="hl-stat-label">Livello di sicurezza</div>
+      <ul class="hl-items">
+        <li>Next.js · Supabase · Stripe</li>
+        <li>Vercel · Resend · Twilio</li>
+        <li>WordPress · WPML</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CTA FINALE
+     ═══════════════════════════════════════════ -->
+<div class="ns-cta">
+  <h2>Pronto a digitalizzare il tuo noleggio?</h2>
+  <p>Richiedi una demo gratuita e scopri come NS3000 può trasformare la gestione della tua flotta.</p>
+  <a href="mailto:ns3000rent@gmail.com?subject=Richiesta Demo NS3000" class="btn">Richiedi una Demo</a>
+  <div class="contact-info">ns3000rent@gmail.com · +39 333 289 1508</div>
+</div>
+
+</body>
+</html>
